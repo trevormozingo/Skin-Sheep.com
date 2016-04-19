@@ -1,0 +1,27 @@
+<% provide(:title, "Edit Skin") %>
+<h1>Update your attachment</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(@skin) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+
+	    <br>
+	    <%= f.radio_button :visibility, 1, :checked => true %>
+	    <%= f.label :visibility, 'Public'%>
+	    <br>
+	    <%= f.radio_button :visibility, 2, :checked => false %>
+	    <%= f.label :visibility, 'Private' %>
+	    <br>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+
+
+    <% end %>
+
+  </div>
+</div>

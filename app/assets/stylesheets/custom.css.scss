@@ -1,0 +1,429 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+/* universal -- HEADER BAR */
+.container {
+  margin: 0;
+  margin-left: 50px;
+}
+
+/*************** ENTIRE OUTLINE OF PAGE */
+html {
+  height: auto;
+  height: 100%;
+}
+
+  body {
+    background-color: white;
+    height: 100%;
+    overflow: hidden;
+  }
+/*************** END PAGE OUTLINE */
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/*************** FOOTER CONTAINER */
+.container-footer {
+    height: 100%;
+    padding: 30px;
+    margin: 30px;
+}
+
+  .row  {
+    //height: auto;
+    height: 90%;
+    padding-left: 50px;
+  }
+/*************** END FOOTER CONTAINER */
+
+#file-table {
+  position: fixed;
+  top: 86px;
+  right: 70px;
+  width: 67%;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+  border-radius: 2px;
+  background-color:#212121;
+  color: #292929;
+}
+
+#remove-header
+{
+  color: white;
+  background-color: #212121;
+}
+
+
+  #file-table tr:last-child {
+    //border-bottom: transparent;
+  }
+
+#file-table tr:last-child td:first-child {
+  border-bottom-left-radius: 2px;
+}
+
+#file-table tr:last-child td:last-child {
+  border-bottom-right-radius: 2px;
+}
+
+#file-table tr:first-child td:first-child {
+  border-top-left-radius: 2px;
+}
+
+#file-table tr:first-child td:last-child {
+  border-top-right-radius: 2px;
+}
+
+// Edit the table header
+#name-header, #desc-header, #file-type-header {
+  color: white;
+  background-color: #212121;
+}
+
+// Add button properties (on home page)
+.add-btn {
+  // Button color (find colors for theme? )
+  background-color: #428BCA;
+  opacity: 1;
+
+  position: fixed;
+  bottom: 65px;
+  right: 50px;
+  padding-top: 4px;
+  text-align: center;
+
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Trebuchet MS";
+  width: 50px;
+  height: 50px;
+}
+
+  .add-btn:hover {
+    opacity: .7;
+    background-color: #212121;
+    text-decoration: none;
+  }
+
+// Table properties
+#table-row {
+  border-bottom: 1px solid #EDEDED;
+  background-color: #F7F7F7;
+}
+
+  .header-elements {
+    cursor: default;
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/*************** FRIENDS COLUMN */
+.friends-col {
+  position: absolute;
+  height: 85%;
+  margin: 0;
+  padding: 20px;
+  max-width: auto;
+  width: 300px;
+  top: 50px;
+  left: 0;
+
+  border-right: 1px solid $gray-medium-light;
+  background-color: white;
+}
+
+  .friends-header {
+    font-size: 16px;
+    text-align: center;
+    color: $gray-light;
+    text-transform: uppercase;
+
+    margin-top: 20px;
+    bottom: 30px;
+  }
+
+    // FRIENDS TEXTFIELD
+    .friends-textfield {
+      bottom: 0;
+      right: 0px;
+
+      width: 300px;
+      line-height: 24px;
+      padding-right: 30px;
+    }
+
+    // FRIENDS SUBMIT BUTTON
+   .friends-submit {
+      // Button color (find colors for theme? )
+      background-color: #428BCA;
+      opacity: 1;
+      color: white;
+      text-align: center;
+
+      border: 0px;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: "Trebuchet MS";
+      width: 30px;
+      height: 30px;
+      margin:0;
+      padding:0;
+  }
+
+  .friends-list {
+    font-size: 15px;
+    font-family: Arial;
+    color: $gray-light;
+    text-transform: uppercase;
+  }
+
+    .friends-submit:hover {
+      opacity: .7;
+      background-color: #212121;
+      text-decoration: none;
+    }
+
+    .friend-name a:hover {
+      text-decoration: none;
+      color: #212121;
+    }
+
+/****************** EDIT FRIEND FILE TABLE */
+.friend-row {
+  background-color: lightgray;
+  width: 100%;
+  border: 1px solid $gray-light;
+
+  margin-top: 30px;
+  padding-bottom: 4px;
+  border-radius: 5px;
+}
+
+  #friend-file-table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #friend-header{
+    padding-left: 20px;
+    padding-bottom: 12px;
+    padding-top: 10px;
+
+    cursor: default;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  #go-home {
+    float: right;
+    padding-right: 20px;
+
+    cursor: default;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+    #go-home a:hover {
+      text-decoration: none;
+      color: #212121;
+    }
+
+/********************** FILE UPLOADING TUTORIAL */
+#tip-friends {
+  position: absolute;
+
+  left: 15px;
+  top: 180px;
+
+  height: 265px;
+  width: 260px;
+  background-image: url("tip-friends.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#tip-files {
+  position: absolute;
+
+  right: 100px;
+  bottom: 90px;
+
+  height: 251px;
+  width: 260px;
+  background-image: url("tip-files.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+.container {
+  border-bottom: 3px solid #428BCA;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+/*
+#logo-outline {
+  background-color: $gray-medium-light;
+  position: absolute;
+  opacity: .1;
+  z-index: -1;
+
+  margin-left: 140px;
+  box-shadow: 3px 3px 30px darkgray;
+
+  width: 2px;
+  height: 50px;
+}*/
+
+#logo-img {
+  position: absolute;
+
+  margin-top: 10px;
+  margin-left: 40px;
+  height: 30px;
+  width: 30px;
+
+  background-image: url("sheep-face.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*#logo-plus {
+  position: absolute;
+
+  margin-top: 4px;
+  margin-left: 73px;
+
+
+  color: #428BCA;
+  font-family: "Trebuchet MS";
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#logo-folder {
+  position: absolute;
+
+  margin-top: 10px;
+  margin-left: 95px;
+  height: 30px;
+  width: 30px;
+
+  background-image: url("white-folder.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+*/
+.gravatar {
+  width: 12%;
+
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+#logo {
+  z-index: -1;
+
+  float: left;
+  margin-right: 10px;
+  margin-left: 80px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+
+  font-weight: bold;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 92%;
+  margin-right: 50px;
+
+  margin-top: 45px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}

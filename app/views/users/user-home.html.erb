@@ -1,0 +1,83 @@
+<% provide(:title, current_user.name + "'s Files") %>
+
+<%= form_tag(controller: "friendships", action: "create", method: "get") do %>
+<div class="friends-col">
+  <div class="friends-header">
+    <%= label_tag(:q, "Add Friend")%>
+  </div>
+
+  <div class="friends-textfield">
+    <span>
+    <span style="font-size: 15px; font-family: Arial; color: $gray-light; cursor: default;">Email:</span> <%= text_field_tag(:q) %>
+    <%=button_tag(type: 'submit', class: "friends-submit") do%>+<% end %>
+    </span>
+  </div>
+
+    <h2 class="friends-list" style="cursor: default; text-align: center; margin-right: 30px;">Your Friends</h2>
+    <ul style="padding-left: 0;">
+      <!-- check for empty -->
+      <% if current_user.friendships.present? == false %>
+        <div id="tip-friends"></div>
+      <%end%>
+
+      <% for friendship in current_user.friendships %>
+        <li class="friend-name" style="list-style: none; border-bottom: 1px solid lightgray; margin-left: 0px; margin-top: 5px;">
+          <span id="gravatar" style="margin-left: 20px; margin-right: 20px;"><%= gravatar_for friendship.friend %></span>
+          <span id="friend-id" style="font-size: 14px; margin-right: 10px; text-transform: uppercase;"><%= link_to friendship.friend.name, friend_files_path(:id => friendship.friend_id)%></span>
+          <span id="friend-delete" style="font-size: 16px; margin-left: 10px; margin-bottom: 0; margin-top: 7px;float: right;"><%= link_to "<span class=\"glyphicon glyphicon-trash\"></span>".html_safe, friendship, :method => :delete, data: { confirm: 'Are you sure?' } %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="row">
+      <% if current_user.skins.empty? == true %>
+        <div id="tip-files"></div>
+      <% end %>
+
+      <!-- Table header -->
+      <% if current_user.skins.empty? == false %>
+      <table id="file-table" >
+        <tr class="header-elements" style="height: 45px;">
+          <td id="desc-header" style="text-align: center;"></td>
+          <td id="name-header" style="padding: 10px;">File Name</td>
+          <td id="desc-header">Description</td>
+          <td id="file-type-header" style="text-align: right; padding-right: 25px;">File Type</td>
+          <td id="edit-delete"></td>
+        </tr>
+
+          <% current_user.skins.each do |s|%>
+              <tr id="table-row" style="height: 35px;">
+                <td style="text-align:center; padding-left: 10px;">
+                  <% if s.visibility == 1 %>
+                      <span style="font-size: 30px; color: #00960D;">
+                            <%= "•" %>
+                      </span>
+                  <%else%>
+                      <span style="font-size: 30px; color: #BF0600;">
+                            <%= "•" %>
+                      </span>
+                  <%end%></td>
+                <td id="name" style="color: #428BCA; text-decoration: underline; padding-left: 10px; padding-right: 10px;">
+                  <%= link_to s.name, download_path(:id => s.id) %>
+                </td>
+                <td id="description" style="padding-right: 100px;"><%= s.description %></td>
+                <td id="file-type" style="text-align: right; padding-right: 30px;"><%=File.extname((s.attachment).to_s)%></td>
+                <td>
+
+                  <span id="file-edit" style="font-size: 18px;"><%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, edit_skin_path(:id => s.id) %></span>
+                </td>
+
+                <td>
+                   <span id="file-delete" style="font-size: 18px; padding-left: 5px; padding-right: 10px;"><%= link_to "<span class=\"glyphicon glyphicon-trash\"></span>".html_safe, deleteSkin_path(:id => s.id), data: { confirm: 'Are you sure?' } %></span>
+                </td>
+                <!--<td>50</td> TODO: Filetype here-->
+              </tr>
+
+          <% end %>
+      </table>
+      <% end %>
+
+      <%= link_to " + ", skins_path, class: "add-btn btn-lg btn-primary" %>
+</div>

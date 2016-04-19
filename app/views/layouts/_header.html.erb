@@ -1,0 +1,43 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+<div class="container">
+  <!--<div id="logo-outline"></div>-->
+    <div id="logo-img"></div>
+    <!--<div id="logo-plus">+</div>
+    <div id="logo-folder"></div>-->
+
+  <% if current_user %>
+    <%= link_to "Skin Sheep", uhome_path, id: "logo" %>
+  <% else %>
+    <%= link_to "Skin Sheep", root_path, id: "logo" %>
+  <% end %>
+
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li><%= link_to "Home",   uhome_path %></li>
+      <% else %>
+        <li style="display: none;"><%= link_to "Home",   root_path %></li>
+      <% end %>
+
+      <% if logged_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= @current_user.name %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Settings", settings_path %></li>
+
+              <li><%= link_to "Help",   help_path %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, :method => :delete %>
+              </li>
+            </ul>
+          </li>
+      <% else %>
+        <li><%= link_to "Log in", login_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+</header>

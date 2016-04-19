@@ -1,0 +1,6 @@
+<h1>All Files</h1>
+<% @skins.each do |f| %>
+  <%=f.name%>
+  <br>
+  <%= link_to f.attachment, "/uploads/skin/attachment/1/Screen_Shot_2016-03-27_at_9.55.29_PM.png"%>
+<% end %>
