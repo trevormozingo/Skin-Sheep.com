@@ -21,22 +21,26 @@ class FriendshipsController < ApplicationController
 			flash[:notice] = "Unable to add friend."
 	    	redirect_to uhome_path
 	 	else
-			if (current_user.id != @user.id)
-		  		@friendship = current_user.friendships.build(:friend_id => @user.id)
-			end
-			if !@friendship.present?
-				flash[:notice] = "Unable to add friend."
-	    		redirect_to uhome_path
-	 		else
-				if @friendship.save
-			    	flash[:notice] = "Added friend."
-			    	redirect_to uhome_path
-			  	else
-			    	flash[:notice] = "Unable to add friend."
-			    	redirect_to uhome_path
-			 	end
+	 		if current_user.friends.exists?(@user)
+	 			redirect_to uhome_path
+	 		else 
+				if (current_user.id != @user.id)
+			  		@friendship = current_user.friendships.build(:friend_id => @user.id)
+				end
+				if !@friendship.present?
+					flash[:notice] = "Unable to add friend."
+		    		redirect_to uhome_path
+		 		else
+					if @friendship.save
+				    	flash[:notice] = "Added friend."
+				    	redirect_to uhome_path
+				  	else
+				    	flash[:notice] = "Unable to add friend."
+				    	redirect_to uhome_path
+				 	end
+				 end
 			 end
-		 end
+		end
 	end
 
 	def destroy
