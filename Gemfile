@@ -9,7 +9,6 @@ gem 'pg'
 gem 'rails_12factor'
 
 
-
 # Bundle for uploading files
 gem 'carrierwave'
 # Use SCSS for stylesheets
