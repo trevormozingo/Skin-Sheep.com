@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :skins
   has_many :friendships
+  has_many :friends, :through => friendships
 
   before_save { self.email = email.downcase }
 
